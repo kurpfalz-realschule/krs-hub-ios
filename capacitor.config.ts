@@ -16,15 +16,15 @@ const HUB_LIVE_URL = 'https://kurpfalz-realschule.github.io/krs-hub/';
 
 const config: CapacitorConfig = {
   // Reverse-DNS der Schul-Domain. In Apple Developer / ABM identisch anlegen.
-  // Enthaelt bewusst einen Bindestrich (aus "realschule-schriesheim.de") — laut
-  // Apple-Doku fuer iOS-Bundle-IDs zulaessig (Alphanumerisch, Bindestrich, Punkt),
-  // aber Capacitors "cap add"-Validierung prueft nach den strengeren
-  // Android/Java-Package-Regeln (keine Bindestriche) und lehnt das ab, obwohl
-  // dieses Projekt bewusst iOS-only ist (kein Android geplant). Deshalb beim
-  // Anlegen `--skip-appid-validation` noetig (siehe package.json-Skript
-  // "cap:add:ios" und README-BUILD.md Schritt 1). Xcode selbst validiert die
-  // Bundle-ID beim Build erneut (zweite Absicherung).
-  appId: 'de.realschule-schriesheim.krshub',
+  // KORRIGIERT (22.07.2026): urspruengliche appId "de.realschule-schriesheim.krshub"
+  // hatte einen Bindestrich (aus "realschule-schriesheim.de"). Apple erlaubt das fuer
+  // iOS-Bundle-IDs, aber Capacitors "cap add ios" lehnt es nach den strengeren
+  // Android/Java-Package-Regeln hart ab (kein Bindestrich) — es gibt dafuer KEIN
+  // Skip-Flag auf "cap add" (nur auf "cap init", das hier nicht verwendet wird, da
+  // capacitor.config.ts schon existiert). Deshalb Bindestrich entfernt statt versucht
+  // zu umgehen. Diese ID ist noch nirgends in Apple Developer/ASM registriert
+  // gewesen (Schritt N2 stand noch aus) — Korrektur war gefahrlos.
+  appId: 'de.realschuleschriesheim.krshub',
   appName: 'KRS Hub',
 
   // Lokales Fallback-Buendel (Offline-/Review-Shell). Wird nur genutzt, wenn

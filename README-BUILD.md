@@ -22,18 +22,17 @@ Nativer Capacitor-Wrapper um die Live-PWA. Dieses Runbook läuft **auf Norberts 
 ## Schritt 1 — Projekt initialisieren
 
 ```bash
-cd "/Users/nk/Downloads/Codex playground/teams 2.0 update macbook pro/krs-hub-ios" && npm install && npx cap add ios --skip-appid-validation && npm run assets
+cd "/Users/nk/Downloads/Codex playground/teams 2.0 update macbook pro/krs-hub-ios" && npm install && npx cap add ios && npm run assets
 ```
 
 Das erzeugt den Ordner `ios/` (Xcode-Projekt) und generiert App-Icons + Splash aus
 `resources/`. `www/` ist bereits vorhanden (Offline-Fallback).
 
-> **`--skip-appid-validation` ist Absicht, kein Workaround-Risiko:** Die App-ID
-> `de.realschule-schriesheim.krshub` enthält einen Bindestrich (aus der echten
-> Schul-Domain). Apple erlaubt Bindestriche in iOS-Bundle-IDs, Capacitors
-> Validierung prüft aber zusätzlich nach den strengeren Android/Java-Regeln
-> (keine Bindestriche) — irrelevant hier, da dieses Projekt bewusst **iOS-only**
-> ist. Xcode validiert die Bundle-ID in Schritt 2 ohnehin ein zweites Mal.
+> **Korrigiert (22.07.2026):** Die ursprüngliche App-ID `de.realschule-schriesheim.krshub`
+> enthielt einen Bindestrich (aus der echten Schul-Domain). Apple erlaubt Bindestriche in
+> iOS-Bundle-IDs, aber `npx cap add ios` lehnt sie nach den strengeren Android/Java-Regeln
+> hart ab — dafür gibt es kein Skip-Flag auf `cap add` (nur auf `cap init`, das hier nicht
+> läuft). Neue App-ID daher **ohne** Bindestrich: `de.realschuleschriesheim.krshub`.
 
 ## Schritt 2 — Xcode-Projekt-Einstellungen
 
@@ -42,7 +41,7 @@ npx cap open ios
 ```
 
 In Xcode (Target „App" → Signing & Capabilities / General):
-- [ ] **Bundle Identifier** = `de.realschule-schriesheim.krshub`
+- [ ] **Bundle Identifier** = `de.realschuleschriesheim.krshub`
 - [ ] **Team** = Apple-Developer-Team der Schule wählen (Automatic Signing)
 - [ ] **Minimum Deployments** = iOS 15.0
 - [ ] **Display Name** = `KRS Hub`

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Nativer iOS-Wrapper (Capacitor) fuer den KRS Hub. Laedt per server.url die Live-PWA — Inhalts-Updates bleiben git-push-live, nur die native Huelle unterliegt dem Apple-Review.",
   "scripts": {
-    "cap:add:ios": "cap add ios --skip-appid-validation",
+    "cap:add:ios": "cap add ios",
     "cap:sync": "cap sync ios",
     "cap:open": "cap open ios",
     "assets": "capacitor-assets generate --ios"
