@@ -1,0 +1,22 @@
+# Node
+node_modules/
+
+# Capacitor / iOS (wird auf dem Mac per `npx cap add ios` erzeugt)
+ios/App/Pods/
+ios/App/App/public/
+ios/App/DerivedData/
+ios/App/build/
+*.xcuserstate
+xcuserdata/
+
+# Build-Artefakte / Signierung — NIEMALS committen
+*.ipa
+*.mobileprovision
+*.p12
+*.p8
+*.cer
+*.certSigningRequest
+ExportOptions.plist
+
+# macOS
+.DS_Store
