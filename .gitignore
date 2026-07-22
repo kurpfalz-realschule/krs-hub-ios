@@ -1,11 +1,11 @@
 # Node
 node_modules/
 
-# Capacitor / iOS (wird auf dem Mac per `npx cap add ios` erzeugt)
-ios/App/Pods/
-ios/App/App/public/
-ios/App/DerivedData/
-ios/App/build/
+# Capacitor / iOS: der komplette Ordner wird auf dem Mac per `npx cap add ios`
+# aus capacitor.config.ts + resources/ neu erzeugt (dünne Hülle, server.url-
+# Ansatz — kein eigener nativer Code). Daher NICHT versionieren, sonst landen
+# riesige Xcode-/Pods-Artefakte im Repo. Bei Bedarf jederzeit neu generierbar.
+ios/
 *.xcuserstate
 xcuserdata/
 
