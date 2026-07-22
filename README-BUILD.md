@@ -22,11 +22,18 @@ Nativer Capacitor-Wrapper um die Live-PWA. Dieses Runbook läuft **auf Norberts 
 ## Schritt 1 — Projekt initialisieren
 
 ```bash
-cd "/Users/nk/Downloads/Codex playground/teams 2.0 update macbook pro/krs-hub-ios" && npm install && npx cap add ios && npm run assets
+cd "/Users/nk/Downloads/Codex playground/teams 2.0 update macbook pro/krs-hub-ios" && npm install && npx cap add ios --skip-appid-validation && npm run assets
 ```
 
 Das erzeugt den Ordner `ios/` (Xcode-Projekt) und generiert App-Icons + Splash aus
 `resources/`. `www/` ist bereits vorhanden (Offline-Fallback).
+
+> **`--skip-appid-validation` ist Absicht, kein Workaround-Risiko:** Die App-ID
+> `de.realschule-schriesheim.krshub` enthält einen Bindestrich (aus der echten
+> Schul-Domain). Apple erlaubt Bindestriche in iOS-Bundle-IDs, Capacitors
+> Validierung prüft aber zusätzlich nach den strengeren Android/Java-Regeln
+> (keine Bindestriche) — irrelevant hier, da dieses Projekt bewusst **iOS-only**
+> ist. Xcode validiert die Bundle-ID in Schritt 2 ohnehin ein zweites Mal.
 
 ## Schritt 2 — Xcode-Projekt-Einstellungen
 
